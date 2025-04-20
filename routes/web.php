@@ -3,6 +3,7 @@
 use App\Http\Controllers\ComprasController;
 use App\Http\Controllers\ContratoController;
 use App\Http\Controllers\LicitacaoController;
+use App\Http\Controllers\OutrosController;
 use App\Http\Controllers\PrincipalController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,3 +22,4 @@ Route::get('/', [PrincipalController::class, 'index'])->name('principal');
 Route::get('/compras', [ComprasController::class, 'index'])->name('compras');
 Route::get('/licitacao', [LicitacaoController::class, 'index'])->name('licitacao');
 Route::get('/contrato', [ContratoController::class, 'index'])->name('contrato');
+Route::get('/outros', [OutrosController::class, 'index'])->name('outros');

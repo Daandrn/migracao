@@ -5,7 +5,7 @@
             <div class="flex">
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('compras')">
+                    <x-nav-link :href="route('principal')">
                         {{ __('Principal') }}
                     </x-nav-link>
                 </div>
@@ -34,6 +34,15 @@
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('contrato')">
                         {{ __('Contratos') }}
+                    </x-nav-link>
+                </div>
+            </div>
+
+            <div class="flex">
+                <!-- Navigation Links -->
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('outros')">
+                        {{ __('Outros') }}
                     </x-nav-link>
                 </div>
             </div>

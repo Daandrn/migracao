@@ -2,24 +2,11 @@
 
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Principal') }}
+            {{ __('Outros') }}
         </h2>
     </x-slot>
 
-    @foreach ($principal['compras'] as $tabela)
-        <div>
-            Tabela: {{ $tabela['nome'] }}
-        </div>
-        <div>
-            @if ($tabela['existe'])
-                Quantidade: {{ $tabela['quantidade'] }}
-            @else
-                Não foram migrados dados para {{ $tabela['nome'] }}.
-            @endif
-        </div>
-    @endforeach
-
-    @foreach ($principal['veiculos'] as $tabela)
+    @foreach ($outros['salaries'] as $tabela)
         <div>
             Tabela: {{ $tabela['nome'] }}
         </div>

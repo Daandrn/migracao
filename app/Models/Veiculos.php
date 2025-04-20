@@ -6,7 +6,7 @@ namespace App\Models;
 
 use Illuminate\Support\Facades\DB;
 
-class Compras
+class Veiculos
 {
     public function getGrupos(): array
     {
@@ -127,5 +127,14 @@ class Compras
         SQL);
 
         return $result;
+    }
+
+    public function tessste(): array
+    {
+        return DB::select(<<<SQL
+            select *
+            from employees
+            limit 100
+        SQL);
     }
 }
