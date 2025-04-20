@@ -6,30 +6,24 @@
         </h2>
     </x-slot>
 
-    @foreach ($principal['compras'] as $tabela)
-        <div>
-            Tabela: {{ $tabela['nome'] }}
-        </div>
-        <div>
-            @if ($tabela['existe'])
-                Quantidade: {{ $tabela['quantidade'] }}
-            @else
-                Não foram migrados dados para {{ $tabela['nome'] }}.
-            @endif
-        </div>
-    @endforeach
+    <h2>
+        Bem vindo ao ajudante de verificação de dados migrados!
+    </h2>
 
-    @foreach ($principal['veiculos'] as $tabela)
-        <div>
-            Tabela: {{ $tabela['nome'] }}
-        </div>
-        <div>
-            @if ($tabela['existe'])
-                Quantidade: {{ $tabela['quantidade'] }}
-            @else
-                Não foram migrados dados para {{ $tabela['nome'] }}.
-            @endif
-        </div>
-    @endforeach
+    <h3>
+        Para visualizar <b>Dados Gerais da Migração</b>, acesse a aba <x-nav-link :href="route('geral')">{{ __('Dados Gerais') }}</x-nav-link>.
+    </h3>
+
+    <h3>
+        Para visualizar dados do <b>Compras</b>, acesse a aba <x-nav-link :href="route('compras')">{{ __('Compras') }}</x-nav-link>.
+    </h3>
+
+    <h3>
+        Para visualizar dados das <b>Licitações</b>, acesse a aba <x-nav-link :href="route('licitacao')">{{ __('Licitações') }}</x-nav-link>.
+    </h3>
+
+    <h3>
+        Para visualizar dados dos <b>Contratos</b>, acesse a aba <x-nav-link :href="route('contrato')">{{ __('Contratos') }}</x-nav-link>.
+    </h3>
     
 </x-app-layout>

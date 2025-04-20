@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [PrincipalController::class, 'index'])->name('principal');
+Route::get('/dadosGerais', [PrincipalController::class, 'dadosGerais'])->name('geral');
 Route::get('/compras', [ComprasController::class, 'index'])->name('compras');
 Route::get('/licitacao', [LicitacaoController::class, 'index'])->name('licitacao');
 Route::get('/contrato', [ContratoController::class, 'index'])->name('contrato');

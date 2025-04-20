@@ -20,6 +20,11 @@ class PrincipalController extends Controller
     }
     
     public function index(): View
+    {        
+        return view('principal');
+    }
+
+    public function dadosGerais(): View
     {
         $compras    = collect();
         $licitacoes = collect();
@@ -33,11 +38,11 @@ class PrincipalController extends Controller
         $this->montarColecao($compras, 'elementoItem', $this->compras->getElementoItem());
         $this->montarColecao($compras, 'historicoMaterial', $this->compras->getHistoricoMaterial());
 
-        $principal = collect();
-        $principal->put('compras', $compras);
-        $principal->put('veiculos', $veiculos);
+        $geral = collect();
+        $geral->put('compras', $compras);
+        $geral->put('veiculos', $veiculos);
         
-        return view('principal', compact('principal'));
+        return view('geral', compact('geral'));
     }
 
     private function montarColecao(Collection $collection, string $nome, array $dados): void
