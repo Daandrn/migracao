@@ -8,14 +8,14 @@ use Illuminate\Support\Facades\DB;
 
 class Veiculos
 {
-    public function getGrupos(): array
+    public function getVeiculos(): array
     {
-        $grupo = DB::select(<<<SQL
+        $veiculos = DB::select(<<<SQL
             select * 
-            from compras.pcgrupo
+            from veiculos.veiculos
         SQL);
         
-        return $grupo;
+        return $veiculos;
     }
 
     public function getTipoGrupos(): array
