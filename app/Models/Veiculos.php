@@ -4,137 +4,210 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Traits\SequenciasVeiculosTrait;
 use Illuminate\Support\Facades\DB;
 
 class Veiculos
 {
-    public function getGrupos(): array
+    use SequenciasVeiculosTrait;
+    
+    public function getVeiculos(): array
     {
-        $grupo = DB::select(<<<SQL
+        $veiculos = DB::select(<<<SQL
             select * 
-            from compras.pcgrupo
+            from veiculos.veiculos
         SQL);
-        
-        return $grupo;
+
+        return $veiculos;
     }
 
-    public function getTipoGrupos(): array
+    public function getCepLocalidades(): array
     {
-        $tipoGrupo = DB::select(<<<SQL
+        $cepLocalidades = DB::select(<<<SQL
             select * 
-            from compras.pctipo
+            from public.ceplocalidades
         SQL);
-        
-        return $tipoGrupo;
+
+        return $cepLocalidades;
     }
 
-    public function getSubgrupos(): array
+    public function getTipoVeiculos(): array
     {
-        $subGrupo = DB::select(<<<SQL
+        $tipoVeiculos = DB::select(<<<SQL
             select * 
-            from compras.pcsubgrupo
+            from veiculos.tipoveiculos
         SQL);
 
-        return $subGrupo;
+        return $tipoVeiculos;
     }
 
-    public function getItens(): array
+    public function getVeicEspecificacao(): array
     {
-        $itens = DB::select(<<<SQL
+        $veicEspecificacao = DB::select(<<<SQL
             select * 
-            from compras.pcmater
+            from veiculos.veicespecificacao
         SQL);
 
-        return $itens;
+        return $veicEspecificacao;
     }
 
-    public function getElementoItem(): array
+    public function getVeicCadMarca(): array
     {
-        $result = DB::select(<<<SQL
-            select *
-            from compras.pcmaterele
-        SQL);
-
-        return $result;
-    }
-
-    public function getHistoricoMaterial(): array
-    {
-        $historicoMaterial = DB::select(<<<SQL
-            select *
-            from public.historicomaterial
-        SQL);
-
-        return $historicoMaterial;
-    }
-
-    public function getGruposComDescVazia(): array
-    {
-        $grupoComDescVazia = DB::select(<<<SQL
+        $veicCadMarca = DB::select(<<<SQL
             select * 
-            from compras.pcgrupo
-            where (
-                pc03_descrgrupo = '' 
-                or pc03_descrgrupo is null
-            )
+            from veiculos.veiccadmarca
         SQL);
-        
-        return $grupoComDescVazia;
+
+        return $veicCadMarca;
     }
 
-    public function getGrupoSemElemento(): array    
+    public function getVeicCadModelo(): array
     {
-        $result = DB::select(<<<SQL
-            select *
-            from compras.pctipo
-            where not exists (
-                select 1
-                from compras.pctipoelemento
-                where pc06_codtipo = pc05_codtipo
-            )
+        $veicCadModelo = DB::select(<<<SQL
+            select * 
+            from veiculos.veiccadmodelo
         SQL);
 
-        return $result;
+        return $veicCadModelo;
     }
 
-    public function getItemSemHistoricoMaterial(): array
+    public function getVeicCadCor(): array
     {
-        $result = DB::select(<<<SQL
-            select *
-            from compras.pcmater
-            where not exists (
-                select 1 
-                from public.historicomaterial 
-                where db150_pcmater = pc01_codmater 
-                    and db150_instit = pc01_instit
-                    and db150_codunid = pc01_unid 
-            )
+        $veicCadCor = DB::select(<<<SQL
+            select * 
+            from veiculos.veiccadcor
         SQL);
 
-        return $result;
+        return $veicCadCor;
     }
 
-    public function getItensSemSubelemento(): array
+    public function getVeicCadTipoCapacidade(): array
     {
-        $result = DB::select(<<<SQL
-            select *
-            from compras.pcmater
-            where not exists (
-                select 1
-                from compras.pcmaterele
-                where pc07_codmater = pc01_codmater
-            )
+        $veicCadTipoCapacidade = DB::select(<<<SQL
+            select * 
+            from veiculos.veiccadtipocapacidade
         SQL);
 
-        return $result;
+        return $veicCadTipoCapacidade;
     }
 
-    public function tessste(): array
+    public function getVeicCadCategCnh(): array
     {
-        return DB::select(<<<SQL
-            select *
-            from employees
-            limit 100
+        $veicCadCategCnh = DB::select(<<<SQL
+            select * 
+            from veiculos.veiccadcategcnh
         SQL);
+
+        return $veicCadCategCnh;
+    }
+
+    public function getVeicCadProced(): array
+    {
+        $veicCadProced = DB::select(<<<SQL
+            select * 
+            from veiculos.veiccadproced
+        SQL);
+
+        return $veicCadProced;
+    }
+
+    public function getVeicCadPotencia(): array
+    {
+        $veicCadPotencia = DB::select(<<<SQL
+            select * 
+            from veiculos.veiccadpotencia
+        SQL);
+
+        return $veicCadPotencia;
+    }
+
+    public function getVeicCadCateg(): array
+    {
+        $veicCadCateg = DB::select(<<<SQL
+            select * 
+            from veiculos.veiccadcateg
+        SQL);
+
+        return $veicCadCateg;
+    }
+
+    public function getVeicTipoAbast(): array
+    {
+        $veicTipoAbast = DB::select(<<<SQL
+            select * 
+            from veiculos.veictipoabast
+        SQL);
+
+        return $veicTipoAbast;
+    }
+
+    public function getCepEstados(): array
+    {
+        $cepEstados = DB::select(<<<SQL
+            select * 
+            from public.cepestados
+        SQL);
+
+        return $cepEstados;
+    }
+
+    public function getVeicCentral(): array
+    {
+        $veicCentral = DB::select(<<<SQL
+            select * 
+            from veiculos.veiccentral
+        SQL);
+
+        return $veicCentral;
+    }
+
+    public function getVeicCadCentralDepart(): array
+    {
+        $veicCadCentralDepart = DB::select(<<<SQL
+            select * 
+            from veiculos.veiccadcentraldepart
+        SQL);
+
+        return $veicCadCentralDepart;
+    }
+
+    public function getDbDepart(): array
+    {
+        $dbDepart = DB::select(<<<SQL
+            select * 
+            from db_depart
+        SQL);
+
+        return $dbDepart;
+    }
+
+    public function getVeicResp(): array
+    {
+        $veicResp = DB::select(<<<SQL
+            select * 
+            from veiculos.veicresp
+        SQL);
+
+        return $veicResp;
+    }
+
+    public function getVeiculosComb(): array
+    {
+        $veiculosComb = DB::select(<<<SQL
+            select * 
+            from veiculos.veiculoscomb
+        SQL);
+
+        return $veiculosComb;
+    }
+
+    public function getVeicBaixa(): array
+    {
+        $veicBaixa = DB::select(<<<SQL
+            select * 
+            from veiculos.veicbaixa
+        SQL);
+
+        return $veicBaixa;
     }
 }

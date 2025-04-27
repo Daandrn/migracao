@@ -2,10 +2,37 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
-class Licitacao extends Model
+class Licitacao
 {
-    use HasFactory;
+    public function getProcessos(): array
+    {
+        $licitacoes = DB::select(<<<SQL
+            select *
+            from licitacoes.liclicita
+        SQL);
+
+        return $licitacoes;
+    }
+
+    public function getItensProcesso(): array
+    {
+        $itensProcessos = DB::select(<<<SQL
+            select *
+            from licitacoes.liclicitem
+        SQL);
+
+        return $itensProcessos;
+    }
+
+    public function getModalidades(): array
+    {
+        $modalidades = DB::select(<<<SQL
+            select *
+            from licitacoes.cflicita
+        SQL);
+
+        return $modalidades;
+    }
 }

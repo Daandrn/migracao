@@ -4,10 +4,13 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Traits\SequenciasComprasTrait;
 use Illuminate\Support\Facades\DB;
 
 class Compras
 {
+    use SequenciasComprasTrait;
+    
     public function getGrupos(): array
     {
         $grupo = DB::select(<<<SQL
@@ -107,7 +110,7 @@ class Compras
                 from public.historicomaterial 
                 where db150_pcmater = pc01_codmater 
                     and db150_instit = pc01_instit
-                    and db150_codunid = pc01_unid 
+                    and coalesce(db150_codunid, 555555) = coalesce(pc01_unid, 555555) 
             )
         SQL);
 
